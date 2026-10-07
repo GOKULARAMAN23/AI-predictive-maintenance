@@ -1,32 +1,79 @@
-# AI PREDICTIVE MAINTENANCE
+# AI PREDICTIVE SYSTEM
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+## AI-Powered Motor Health Monitoring & Predictive Maintenance System
 
-Currently, two official plugins are available:
+> **Give Your Machines a Voice. Before They Fail.**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+MACHINE DNA™ is a smart motor health monitoring and predictive maintenance prototype designed to continuously monitor the operating condition of industrial motors.
 
-## React Compiler
+The system collects multiple machine parameters such as **temperature, vibration, and electrical current**, processes the data, evaluates the motor's condition, and provides an early warning when abnormal behavior is detected.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## Problem Statement
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Industrial motors are critical components in manufacturing plants, pumps, conveyors, compressors, fans, and other machinery.
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
-```
+A motor failure can result in:
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+- Unplanned production downtime
+- High maintenance costs
+- Equipment damage
+- Production delays
+- Reduced machine availability
+- Potential safety risks
+
+Traditional maintenance approaches often depend on scheduled maintenance or reacting after a failure occurs.
+
+### Our Goal
+
+Instead of waiting for a motor to fail, MACHINE DNA aims to continuously monitor the machine and identify abnormal operating conditions at an early stage.
+
+---
+
+# Our Solution
+
+MACHINE DNA combines multiple sensors with a processing system to understand the health of a motor.
+
+### Parameters monitored
+
+| Parameter | Sensor | Purpose |
+|---|---|---|
+| Temperature | DS18B20 | Detect overheating and abnormal thermal conditions |
+| Vibration | MPU6050 | Detect abnormal mechanical vibration |
+| Current | ACS712 | Monitor electrical load/current behavior |
+
+The collected sensor data is processed by an **Arduino UNO** and converted into an understandable motor health status.
+
+---
+
+# System Architecture
+
+```text
+                  DC MOTOR
+                     │
+        ┌────────────┼────────────┐
+        │            │            │
+        ▼            ▼            ▼
+   MPU6050        DS18B20      ACS712
+  Vibration     Temperature     Current
+        │            │            │
+        └────────────┼────────────┘
+                     │
+                     ▼
+                ARDUINO UNO
+                     │
+                     ▼
+             DATA PROCESSING
+                     │
+                     ▼
+             HEALTH ASSESSMENT
+                     │
+              ┌──────┼──────┐
+              │      │      │
+              ▼      ▼      ▼
+            GREEN  YELLOW   RED
+            NORMAL WARNING CRITICAL
+                     │
+                     ▼
+             SERIAL / DASHBOARD
