@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+@theme {
+  --color-industrial-950: #07080b;
+  --color-industrial-900: #0a0b0e;
+  --color-industrial-850: #0f1218;
+  --color-industrial-800: #12151c;
+  --color-industrial-750: #161b24;
+  --color-industrial-700: #1a1f2b;
+  --color-industrial-600: #262e3f;
+  --color-industrial-500: #38435c;
+
+  --color-cyan: #00f0ff;
+  --color-cyan-glow: #00f0ff40;
+  --color-cyan-dim: #00b8c4;
+
+  --color-amber: #f59e0b;
+  --color-amber-glow: #f59e0b40;
+  --color-amber-dim: #d97706;
+
+  --color-crimson: #ff1e56;
+  --color-crimson-glow: #ff1e5640;
+  --color-crimson-dim: #dc2626;
+
+  --color-cobalt: #3b82f6;
+  --color-cobalt-glow: #3b82f640;
+
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Space Mono', monospace;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+}
+
+:root {
+  --bg-primary: #0a0b0e;
+  --bg-secondary: #12151c;
+  --accent-cyan: #00f0ff;
+  --accent-amber: #f59e0b;
+  --accent-crimson: #ff1e56;
+}
+
+body {
+  background-color: #07080b;
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Custom Industrial Dashboard Utility Classes */
+.font-mono-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-feature-settings: "tnum" 1, "zero" 1;
+}
+
+.glow-cyan {
+  box-shadow: 0 0 20px -3px rgba(0, 240, 255, 0.25);
+}
+
+.glow-amber {
+  box-shadow: 0 0 20px -3px rgba(245, 158, 11, 0.25);
+}
+
+.glow-crimson {
+  box-shadow: 0 0 25px 0px rgba(255, 30, 86, 0.45);
+}
+
+.text-glow-cyan {
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+}
+
+.text-glow-amber {
+  text-shadow: 0 0 12px rgba(245, 158, 11, 0.6);
+}
+
+.text-glow-crimson {
+  text-shadow: 0 0 16px rgba(255, 30, 86, 0.8);
+}
+
+.border-glow-cyan {
+  border-color: rgba(0, 240, 255, 0.5);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2), inset 0 0 15px rgba(0, 240, 255, 0.05);
+}
+
+.border-glow-amber {
+  border-color: rgba(245, 158, 11, 0.5);
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.2), inset 0 0 15px rgba(245, 158, 11, 0.05);
+}
+
+.border-glow-crimson {
+  border-color: rgba(255, 30, 86, 0.6);
+  box-shadow: 0 0 20px rgba(255, 30, 86, 0.35), inset 0 0 20px rgba(255, 30, 86, 0.1);
+}
+
+/* Engineering grid background */
+.bg-grid-overlay {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+.bg-circuit-overlay {
+  background-size: 48px 48px;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(0, 240, 255, 0.08) 1.5px, transparent 0);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 15px rgba(255, 30, 86, 0.7)); }
+  50% { opacity: 0.6; filter: drop-shadow(0 0 5px rgba(255, 30, 86, 0.2)); }
+}
+
+@keyframes pulseFast {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-pulse-fast {
+  animation: pulseFast 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0b0e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1e2638;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2b3752;
+}
